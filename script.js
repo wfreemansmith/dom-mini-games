@@ -1,5 +1,5 @@
-let playerTurn = "o";
-const totals = { o: 0, x: 0 };
+let playerTurn = "O";
+const totals = { O: 0, X: 0 };
 
 let squares = document.querySelectorAll(".square");
 let reset = document.getElementById("reset");
@@ -13,10 +13,10 @@ function changeButton(square) {
 
   checkWinner();
 
-  if (playerTurn === "o") {
-    playerTurn = "x";
+  if (playerTurn === "O") {
+    playerTurn = "X";
   } else {
-    playerTurn = "o";
+    playerTurn = "O";
   }
   player.innerText = `Player ${playerTurn}'s turn`
 }
@@ -30,7 +30,7 @@ checkWinner = () => {
   ) {
     alert(`victory for player ${playerTurn}!!`);
     totals[playerTurn]++;
-    tally.innerText = `O: ${totals.o} X: ${totals.x}`;
+    tally.innerText = `O: ${totals.O} X: ${totals.X}`;
   }
 
   if (
@@ -40,7 +40,7 @@ checkWinner = () => {
   ) {
     alert(`victory for player ${playerTurn}!!`);
     totals[playerTurn]++;
-    tally.innerText = `O: ${totals.o} X: ${totals.x}`;
+    tally.innerText = `O: ${totals.O} X: ${totals.X}`;
   }
 
   if (
@@ -50,7 +50,7 @@ checkWinner = () => {
   ) {
     alert(`victory for player ${playerTurn}!!`);
     totals[playerTurn]++;
-    tally.innerText = `O: ${totals.o} X: ${totals.x}`;
+    tally.innerText = `O: ${totals.O} X: ${totals.X}`;
   }
 
   //diagonal
@@ -61,7 +61,7 @@ checkWinner = () => {
   ) {
     alert(`victory for player ${playerTurn}!!`);
     totals[playerTurn]++;
-    tally.innerText = `O: ${totals.o} X: ${totals.x}`;
+    tally.innerText = `O: ${totals.O} X: ${totals.X}`;
   }
 
   if (
@@ -71,7 +71,7 @@ checkWinner = () => {
   ) {
     alert(`victory for player ${playerTurn}!!`);
     totals[playerTurn]++;
-    tally.innerText = `O: ${totals.o} X: ${totals.x}`;
+    tally.innerText = `O: ${totals.O} X: ${totals.X}`;
   }
 
   //vertical
@@ -82,7 +82,7 @@ checkWinner = () => {
   ) {
     alert(`victory for player ${playerTurn}!!`);
     totals[playerTurn]++;
-    tally.innerText = `O: ${totals.o} X: ${totals.x}`;
+    tally.innerText = `O: ${totals.O} X: ${totals.X}`;
   }
 
   if (
@@ -92,7 +92,7 @@ checkWinner = () => {
   ) {
     alert(`victory for player ${playerTurn}!!`);
     totals[playerTurn]++;
-    tally.innerText = `O: ${totals.o} X: ${totals.x}`;
+    tally.innerText = `O: ${totals.O} X: ${totals.X}`;
   }
 
   if (
@@ -102,7 +102,7 @@ checkWinner = () => {
   ) {
     alert(`victory for player ${playerTurn}!!`);
     totals[playerTurn]++;
-    tally.innerText = `O: ${totals.o} X: ${totals.x}`;
+    tally.innerText = `O: ${totals.O} X: ${totals.X}`;
   }
 };
 
