@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Noughts and Crosses</title>
 
-    <script src = script.js defer></script>
-</head>
+    <script src="script.js" defer></script>
+  </head>
 
+  <body>
+    <center><h1>Noughts and Crosses</h1></center>
 
-<body>
-   <center> <h1>Noughts and Crosses</h1> </center>
+    <section align="center">
+      <p>
+        introduction: Noughts and Crosses is played on a three-by-three grid by
+        two players, who alternately place the marks X and O in one of the nine
+        spaces in the grid.
+      </p>
+      <h2 id="player">Player o's turn</h2>
 
-   <section align = "center">
-    <p> introduction: Noughts and Crosses is played on a three-by-three grid by two players, who alternately place the marks X and O in one of the nine spaces in the grid. </p>
+      <button class="square">_</button> <button class="square">_</button>
+      <button class="square">_</button> <br />
 
-    <button class="square">_</button> <button class="square">_</button> <button class="square">_</button> <br>
+      <button class="square">_</button> <button class="square">_</button>
+      <button class="square">_</button> <br />
 
+      <button class="square">_</button> <button class="square">_</button>
+      <button class="square">_</button> <br />
 
-    <button class="square">_</button> <button class="square">_</button> <button class="square">_</button> <br>
+      <button id="reset">reset</button>
 
-
-    <button class="square">_</button> <button class="square">_</button> <button class="square">_</button> <br>
-
-    <button id="reset">reset</button>
-
+      <p>Totals</p>
+      <p id="tally">O: 0, X: 0</p>
     </section>
-
-</body>
-
-
-
-
+  </body>
 </html>
