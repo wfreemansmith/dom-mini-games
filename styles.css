@@ -10,7 +10,6 @@
 .square {
   background-color: #4CAF50; /* Green */
   border: 2px;
-  border-color: black;
   color: rgb(0, 0, 0);
   padding: 40px 40px;
   text-align: center;
