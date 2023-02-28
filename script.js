@@ -9,6 +9,8 @@ const totals = { O: 0, X: 0 };
 function changeButton(square) {
   if (square.innerText === "_") {
     square.innerText = playerTurn;
+    console.log(square)
+    square.classList.add(playerTurn);
 
     checkWinner();
 
@@ -50,6 +52,8 @@ checkWinner = () => {
 function resetButton() {
   squares.forEach((square) => {
     square.innerText = "_";
+    square.classList.remove("O");
+    square.classList.remove("X");
   });
 }
 
