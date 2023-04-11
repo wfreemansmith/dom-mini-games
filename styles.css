@@ -1,40 +1,123 @@
 * {
-  margin: 10px;
-  border-width: 2px;
-  border-radius: 18px;
-  background-color: rgb(235, 201, 65);
-  padding: 10px;
-  font-family: 'Share Tech Mono', monospace, sans-serif;
+  margin: 0px;
+    border-radius: 18px;
+    background-color: #ebc941;
+    padding: 5px;
+    font-family: "Share Tech Mono", monospace, sans-serif;
 }
 
-.square {
+body {
+  height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+#content {
+  display: grid;
+    min-width: 310px;
+    /* background-color: #4caf50; */
+    justify-content: center;
+}
+
+header {
+  display: flex;
+    justify-content: center;
+}
+
+#heading {
+  padding: 10px 0px;
+    text-align: center;
+    font-size: 28px;
+    max-width: 320px;
+}
+
+h2 {
+  font-size: 18px
+}
+
+p {
+  margin: 5px
+}
+
+button {
+  padding: 5px 10px;
   border-width: 2px;
-  color: rgb(0, 0, 0);
-  padding: 40px 40px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 24px;
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+}
+
+#player {
+  padding: 10px;
+  margin: 5px
+}
+
+#playing-grid {
+  padding: 10px;
+    margin: 10px;
+}
+
+#reset {
+  margin: 5px
+}
+
+.square
+
+{width: 18vw;
+    height: 20vw;
+    max-width: 63px;
+    max-height: 70px;
+    text-align: center;
+    display: inline-block;
+    font-size: 24px;
+    color: transparent;
+    margin: 5px;
+}
+
+.playing-grid {
+  min-width: 300px
+}
+
+.hover {
+  color: black
 }
 
 .O {
-  background-color: #4CAF50;  
-  border-width: 2px;
-  border-color:rgb(0, 0, 0);
-  padding: 40px 40px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 24px;
+  background-color: #4caf50;
+  border-color: #4caf50;
+  color: black
 }
 
 .X {
-  background-color: #b35c7d; 
-  border-width: 2px;
-  border-color:rgb(0, 0, 0);
-  padding: 40px 40px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 24px;
+  background-color: #b35c7d;
+  border-color: #b35c7d;
+  color: black;
+}
+
+@media only screen and (min-width: 781px) {
+  * {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .heading {
+    font-size: 40px
+  }
+
+  body {
+  }
+  
+  #content {
+    display: flex;
+    width: 50%;
+    margin: 0%;
+    min-width: 600px;
+    background-color: #b35c7d;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+
+  }
 }

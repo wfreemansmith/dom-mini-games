@@ -5,14 +5,15 @@ let player = document.getElementById("player");
 
 let playerTurn = "O";
 const totals = { O: 0, X: 0 };
+let winner = false;
 
 function changeButton(square) {
-  if (square.innerText === "_") {
+  if (square.innerText === "_" && !winner) {
     square.innerText = playerTurn;
-    console.log(square)
     square.classList.add(playerTurn);
 
     checkWinner();
+    if (winner) return;
 
     playerTurn === "O" ? (playerTurn = "X") : (playerTurn = "O");
     player.innerText = `Player ${playerTurn}'s turn`;
@@ -31,25 +32,22 @@ checkWinner = () => {
     [2, 4, 6],
   ];
 
-  
   for (let i = 0; i < winners.length; i++) {
     if (
       squares[winners[i][0]].innerText === playerTurn &&
       squares[winners[i][1]].innerText === playerTurn &&
       squares[winners[i][2]].innerText === playerTurn
-      // iterates throught the above array, checking if there are any winning patterns
-      
-      ) {
-      alert(`Victory for player ${playerTurn}!!`);
+    ) {
+      winner = true;
+      player.innerText = `Victory for Player ${playerTurn}!`;
       totals[playerTurn]++;
       tally.innerText = `O: ${totals.O} X: ${totals.X}`;
-      // if there are winning patterns: alert, add one to total, update totals
-    
     }
   }
 };
 
 function resetButton() {
+  winner = false;
   squares.forEach((square) => {
     square.innerText = "_";
     square.classList.remove("O");
@@ -61,6 +59,14 @@ squares.forEach((square) => {
   square.addEventListener("click", () => {
     changeButton(square);
   });
+  // square.addEventListener("mouseover", () => {
+  //   square.innerText = playerTurn;
+  //   square.classList.add("hover");
+  // });
+  // square.addEventListener("mouseout", () => {
+  //   square.innerText = "_";
+  //   square.classList.remove("hover");
+  // });
 });
 
 reset.addEventListener("click", () => {
