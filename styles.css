@@ -1,43 +1,69 @@
+html {
+  padding: 0px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+
 * {
   margin: 0px;
-    border-radius: 18px;
-    background-color: #ebc941;
-    padding: 5px;
-    font-family: "Share Tech Mono", monospace, sans-serif;
+  border-radius: 18px;
+  background-color: #ebc941;
+  padding: 5px;
+  font-family: "Share Tech Mono", monospace, sans-serif;
+}
+
+#grid-container {
+  display: grid;
+  height: 100vh;
+  padding: 0px;
+  justify-content: center;
+  align-content: center;
 }
 
 body {
-  height: 100vh;
-    display: grid;
-    justify-content: center;
-    align-content: center;
-}
-
-#content {
   display: grid;
-    min-width: 310px;
-    /* background-color: #4caf50; */
-    justify-content: center;
+  min-width: 310px;
+  padding: 0px;
 }
 
 header {
   display: flex;
-    justify-content: center;
+  justify-content: center;
+  margin: 5px 0px;
 }
 
-#heading {
-  padding: 10px 0px;
-    text-align: center;
-    font-size: 28px;
-    max-width: 320px;
+.heading {
+  text-align: center;
+  max-width: 320px;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+.game {
+  text-align: center;
+}
+
+#player {
+  margin: 10px;
 }
 
 h2 {
-  font-size: 18px
+  font-size: 18px;
 }
 
 p {
-  margin: 5px
+  margin: 5px;
+}
+
+#playing-grid {
+  margin: 15px;
 }
 
 button {
@@ -45,47 +71,29 @@ button {
   border-width: 2px;
   border-style: solid;
   border-color: rgb(0, 0, 0);
+  color: black;
 }
 
-#player {
-  padding: 10px;
-  margin: 5px
-}
-
-#playing-grid {
-  padding: 10px;
-    margin: 10px;
-}
-
-#reset {
-  margin: 5px
-}
-
-.square
-
-{width: 18vw;
-    height: 20vw;
-    max-width: 63px;
-    max-height: 70px;
-    text-align: center;
-    display: inline-block;
-    font-size: 24px;
-    color: transparent;
-    margin: 5px;
-}
-
-.playing-grid {
-  min-width: 300px
+.square {
+  width: 16vw;
+  height: 18vw;
+  max-width: 63px;
+  max-height: 70px;
+  text-align: center;
+  display: inline-block;
+  font-size: 24px;
+  color: transparent;
+  margin: 5px;
 }
 
 .hover {
-  color: black
+  color: black;
 }
 
 .O {
   background-color: #4caf50;
   border-color: #4caf50;
-  color: black
+  color: black;
 }
 
 .X {
@@ -94,30 +102,13 @@ button {
   color: black;
 }
 
+#reset {
+  margin: 5px;
+}
+
 @media only screen and (min-width: 781px) {
-  * {
-    margin: 10px;
-    padding: 10px;
-  }
 
-  .heading {
-    font-size: 40px
-  }
-
-  body {
-  }
-  
-  #content {
-    display: flex;
-    width: 50%;
-    margin: 0%;
-    min-width: 600px;
-    background-color: #b35c7d;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-    align-content: center;
-    flex-direction: column;
-
+  h1 {
+    font-size: 35px;
   }
 }
