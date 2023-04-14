@@ -74,6 +74,12 @@ button {
   color: black;
 }
 
+#reset {
+  margin: 5px;
+}
+
+/* Noughts and Crosses */
+
 .square {
   width: 16vw;
   height: 18vw;
@@ -102,8 +108,45 @@ button {
   color: black;
 }
 
-#reset {
+/* Memory Game */
+
+#memory-grid {
+  display: flex;
+  margin: 15px;
+  max-width: 320px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+img {
+  object-fit: cover;
+}
+
+.card-border {
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+  border-radius: 8px;
+  padding: 0px;
+  width: 16vw;
+  height: 18vw;
+  max-width: 63px;
+  max-height: 70px;
   margin: 5px;
+}
+
+.card {
+  width: 16vw;
+  height: 18vw;
+  padding: 0px; 
+  border-radius: 5px;
+  max-width: 63px;
+  max-height: 70px;
+  opacity: 0
+}
+
+.show {
+  opacity: 1
 }
 
 @media only screen and (min-width: 781px) {

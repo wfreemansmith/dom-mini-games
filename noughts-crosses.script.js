@@ -1,3 +1,5 @@
+import { randomMessage, navigate } from "./functions.js";
+
 let squares = document.querySelectorAll(".square");
 let reset = document.getElementById("reset");
 let tally = document.getElementById("tally");
@@ -22,7 +24,7 @@ function changeButton(square) {
   }
 }
 
-checkWinner = () => {
+function checkWinner() {
   const winners = [
     [0, 1, 2],
     [3, 4, 5],
@@ -46,7 +48,7 @@ checkWinner = () => {
       tally.innerText = `O: ${totals.O} X: ${totals.X}`;
     }
   }
-};
+}
 
 function resetButton() {
   winner = false;
@@ -73,4 +75,8 @@ squares.forEach((square) => {
 
 reset.addEventListener("click", () => {
   resetButton();
+});
+
+addEventListener("keydown", (event) => {
+  navigate("noughts-crosses.html", event.keyCode)
 });
