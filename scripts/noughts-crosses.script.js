@@ -1,4 +1,4 @@
-import { randomMessage, navigate } from "./functions.js";
+import { randomMessage, navigate } from "./utils.script.js";
 
 let squares = document.querySelectorAll(".square");
 let reset = document.getElementById("reset");

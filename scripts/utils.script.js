@@ -7,13 +7,16 @@ export const randomMessage = (arr) => {
 
 export const navigate = (url, keystroke) => {
   const pages = ["noughts-crosses.html", "memory.html"];
-  let position = pages.indexOf(url);
+  let i =
+    url === "index.html"
+      ? Math.round(Math.random() * (pages.length - 1))
+      : pages.indexOf(url);
 
   if (keystroke === 37) {
-    position = position === 0 ? pages.length - 1 : position - 1;
+    i = i === 0 ? pages.length - 1 : i - 1;
   } else if (keystroke === 39) {
-    position = position === pages.length - 1 ? 0 : position + 1;
+    i = i === pages.length - 1 ? 0 : i + 1;
   }
 
-  parent.location = pages[position];
+  parent.location = pages[i];
 };
