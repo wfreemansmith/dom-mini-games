@@ -2,7 +2,6 @@ import { randomMessage, navigate, handleKeyDown, darkMode } from "./utils.script
 import { getImages } from "../assets/images.js";
 import {
   noMatchMessages,
-  nextTurnMessages,
   foundMatchMessages,
 } from "../assets/messages.js";
 
@@ -70,7 +69,6 @@ function newTurn(card) {
   cards[choiceB].classList.remove("show");
   choiceA = null;
   choiceB = null;
-  message.innerHTML = randomMessage(nextTurnMessages);
 
   chooseCard(card);
 }
