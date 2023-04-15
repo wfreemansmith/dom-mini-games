@@ -1,4 +1,4 @@
-import { navigate, handleKeyDown } from "./utils.script.js";
+import { navigate, handleKeyDown, darkMode } from "./utils.script.js";
 
 let heading = document.getElementById("heading");
 let player = document.getElementById("player");
@@ -78,8 +78,10 @@ reset.addEventListener("click", () => {
   resetButton();
 });
 
-heading.addEventListener("dblclick", () => {
-  navigate("index.html")
+heading.addEventListener("click", () => {
+  darkMode(document)
+  // navigate("index.html")
+  // navigate("noughts-crosses.html", 39)
 })
 
 addEventListener("keydown", (event) => {

@@ -22,7 +22,7 @@ export const navigate = (url, key) => {
 };
 
 export const handleKeyDown = (url, key) => {
-    // Spacebar: 32
+  // Spacebar: 32
   // Up: 38
   // Down: 40
   // Tab: 9
@@ -30,5 +30,15 @@ export const handleKeyDown = (url, key) => {
     ? navigate(url, key)
     : key === 9
     ? console.log("Toggle between light and dark here")
-    : console.log({key});
-}
+    : console.log({ key });
+};
+
+export const darkMode = (document) => {
+  let elements = document.querySelectorAll("*");
+  
+  elements.forEach((element) => {
+    element.classList.contains("dark")
+      ? element.classList.remove("dark")
+      : element.classList.add("dark");
+  });
+};

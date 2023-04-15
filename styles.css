@@ -78,6 +78,12 @@ button {
   margin: 5px;
 }
 
+.dark {
+  background-color: black;
+  border-color: #ebc941;
+  color: #ebc941
+}
+
 /* Noughts and Crosses */
 
 .square {

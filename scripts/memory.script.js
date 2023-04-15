@@ -96,8 +96,10 @@ reset.addEventListener("click", () => {
   resetButton();
 });
 
-heading.addEventListener("dblclick", () => {
-  navigate("index.html")
+heading.addEventListener("click", () => {
+  darkMode(document)
+  // navigate("index.html")
+  // navigate("memory.html", 39)
 })
 
 addEventListener("keydown", (event) => {
