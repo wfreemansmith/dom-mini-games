@@ -9,12 +9,22 @@
   <script type="module" src="./scripts/memory.script.js" defer></script>
 </head>
 <div id="grid-container">
+      <div id="dark-area">
+        <button id="dark-toggle" class="symbol">☀</button>
+      </div>
+      <div id="left-area">
+        <button id="left" class="symbol">🭮</button>
+      </div>
+      <div id="right-area">
+        <button id="right" class="symbol">🭬</button>
+      </div>
+      
   <body>
-      <header>
+      <header id="header-area">
         <h1 id="heading">Matching Pairs</h1>
       </header>
   
-      <section class="game">
+      <section id="game-area">
         <h2 id="player">Solo player</h2>
   
         <span id="memory-grid">
@@ -55,12 +65,13 @@
             <img class="card" id="11"></img> <br />
           </div>
         </span>
-  
-        <button id="reset">reset</button>
-  
-        <p>Totals</p>
-        <p id="tally">Turns: 0</p>
       </section>
+      <section id ="scores-area">
+    <button id="reset">reset</button>
+
+    <p>Totals</p>
+    <p id="tally">Turns: 0</p>
+  </section>
     </body>
   </div>
 </html>

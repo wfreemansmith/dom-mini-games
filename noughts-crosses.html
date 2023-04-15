@@ -6,31 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Noughts and Crosses</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
-    <script type="module" src="./scripts/noughts-crosses.script.js" defer></script>
+    <script
+      type="module"
+      src="./scripts/noughts-crosses.script.js"
+      defer
+    ></script>
   </head>
 
   <div id="grid-container">
-  <body>
-      <header>
+    <div id="dark-area">
+      <button id="dark-toggle" class="symbol">☀</button>
+    </div>
+    <div id="left-area">
+      <button id="left" class="symbol">🭮</button>
+    </div>
+    <div id="right-area">
+      <button id="right" class="symbol">🭬</button>
+    </div>
+    
+    <body>
+      <header id="header-area">
         <h1 id="heading">Noughts & Crosses</h1>
       </header>
-  
-      <section class="game">
+
+      <section id="game-area">
         <h2 id="player">Player O's turn</h2>
-  
+
         <p id="playing-grid">
           <button class="square">_</button> <button class="square">_</button>
           <button class="square">_</button> <br />
-  
+
           <button class="square">_</button> <button class="square">_</button>
           <button class="square">_</button> <br />
-  
+
           <button class="square">_</button> <button class="square">_</button>
           <button class="square">_</button>
         </p>
-  
+      </section>
+      <section id="scores-area">
         <button id="reset">reset</button>
-  
+
         <p>Totals</p>
         <p id="tally">O: 0 X: 0</p>
       </section>

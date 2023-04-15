@@ -1,6 +1,9 @@
-import { navigate, handleKeyDown } from "./utils.script.js";
+import { navigate, handleKeyDown, darkMode } from "./utils.script.js";
 
 let heading = document.getElementById("heading");
+let toggle = document.getElementById("dark-toggle")
+let left = document.getElementById("left")
+let right = document.getElementById("right")
 let player = document.getElementById("player");
 let squares = document.querySelectorAll(".square");
 let reset = document.getElementById("reset");
@@ -78,8 +81,20 @@ reset.addEventListener("click", () => {
   resetButton();
 });
 
-heading.addEventListener("dblclick", () => {
-  navigate("index.html")
+heading.addEventListener("click", () => {
+  darkMode()
+})
+
+toggle.addEventListener("click", () => {
+  darkMode()
+})
+
+left.addEventListener("click", () => {
+  navigate("noughts-crosses.html", -1)
+})
+
+right.addEventListener("click", () => {
+  navigate("noughts-crosses.html", 1)
 })
 
 addEventListener("keydown", (event) => {
