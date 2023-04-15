@@ -1,9 +1,10 @@
-import { randomMessage, navigate } from "./utils.script.js";
+import { navigate, handleKeyDown } from "./utils.script.js";
 
+let heading = document.getElementById("heading");
+let player = document.getElementById("player");
 let squares = document.querySelectorAll(".square");
 let reset = document.getElementById("reset");
 let tally = document.getElementById("tally");
-let player = document.getElementById("player");
 
 let playerTurn = "O";
 const totals = { O: 0, X: 0 };
@@ -77,6 +78,10 @@ reset.addEventListener("click", () => {
   resetButton();
 });
 
+heading.addEventListener("dblclick", () => {
+  navigate("index.html")
+})
+
 addEventListener("keydown", (event) => {
-  navigate("noughts-crosses.html", event.keyCode)
+  handleKeyDown("noughts-crosses.html", event.keyCode)
 });

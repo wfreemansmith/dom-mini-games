@@ -1,4 +1,4 @@
-import { randomMessage, navigate } from "./utils.script.js";
+import { randomMessage, navigate, handleKeyDown } from "./utils.script.js";
 import { getImages } from "../assets/images.js";
 import {
   noMatchMessages,
@@ -6,14 +6,15 @@ import {
   foundMatchMessages,
 } from "../assets/messages.js";
 
+let heading = document.getElementById("heading");
+let message = document.getElementById("player");
 let cards = document.querySelectorAll(".card");
 let reset = document.getElementById("reset");
-let message = document.getElementById("player");
 let tally = document.getElementById("tally");
 
 let choiceA = null;
 let choiceB = null;
-let won = false;
+let winner = false;
 let turns = 0;
 
 tally.innerText = `Turns: ${turns}`;
@@ -25,8 +26,7 @@ for (let i = 0; i < imgs.length; i++) {
 }
 
 function chooseCard(card) {
-  if (card.classList.contains("show") || won) return;
-  tally.innerText = `Turns: ${++turns}`;
+  if (card.classList.contains("show") || winner) return;
 
   !choiceA
     ? (choiceA = card.id)
@@ -41,7 +41,7 @@ function chooseCard(card) {
 function checkMatch() {
   if (checkWinner()) {
     message.innerHTML = "You win!";
-    won = true;
+    winner = true;
   } else if (imgs[choiceA] === imgs[choiceB]) {
     console.log(checkWinner());
     message.innerHTML = randomMessage(foundMatchMessages);
@@ -50,6 +50,7 @@ function checkMatch() {
   } else {
     message.innerHTML = randomMessage(noMatchMessages);
   }
+  tally.innerText = `Turns: ${++turns}`;
 }
 
 function checkWinner() {
@@ -74,9 +75,9 @@ function newTurn(card) {
 function resetButton() {
   choiceA = null;
   choiceB = null;
-  won = false;
+  winner = false;
   turns = 0;
-  tally.innerText = `Turns: ${turns}`;
+  tally.innerText = `Turns: ${Math.floor(turns)}`;
 
   cards.forEach((card) => {
     card.classList.remove("show");
@@ -95,6 +96,10 @@ reset.addEventListener("click", () => {
   resetButton();
 });
 
+heading.addEventListener("dblclick", () => {
+  navigate("index.html")
+})
+
 addEventListener("keydown", (event) => {
-  navigate("memory.html", event.keyCode);
+  handleKeyDown("memory.html", event.keyCode)
 });
