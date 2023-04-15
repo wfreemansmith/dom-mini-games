@@ -26,16 +26,21 @@ export const handleKeyDown = (url, key) => {
   // Up: 38
   // Down: 40
   // Tab: 9
-  key === 37 || key === 39
+  key === 9 || key === 38
+    ? darkMode()
+    : key === 37 || key === 39
     ? navigate(url, key)
     : key === 9
     ? console.log("Toggle between light and dark here")
     : console.log({ key });
 };
 
-export const darkMode = (document) => {
+export const darkMode = () => {
   let elements = document.querySelectorAll("*");
-  
+  let toggle = document.getElementById("dark-toggle")
+
+  toggle.innerHTML = toggle.classList.contains("dark") ? "☀" : "☂"
+
   elements.forEach((element) => {
     element.classList.contains("dark")
       ? element.classList.remove("dark")

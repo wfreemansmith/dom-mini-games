@@ -79,7 +79,7 @@ reset.addEventListener("click", () => {
 });
 
 heading.addEventListener("click", () => {
-  darkMode(document)
+  darkMode()
   // navigate("index.html")
   // navigate("noughts-crosses.html", 39)
 })

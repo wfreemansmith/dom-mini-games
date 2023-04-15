@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&display=swap');
+
 html {
   padding: 0px;
   -ms-overflow-style: none;
@@ -8,11 +10,14 @@ html::-webkit-scrollbar {
   display: none;
 }
 
+/* #b43c51 Dark red*/
+
 
 * {
   margin: 0px;
   border-radius: 18px;
   background-color: #ebc941;
+  color: #27272a;
   padding: 5px;
   font-family: "Share Tech Mono", monospace, sans-serif;
 }
@@ -21,12 +26,20 @@ html::-webkit-scrollbar {
   display: grid;
   height: 100vh;
   padding: 0px;
+  /* grid-template-columns: 50px auto 50px;
+  grid-template-areas: "left main right"; */
+  /* grid-template-rows: auto; */
   justify-content: center;
   align-content: center;
 }
 
-body {
+nav {
   display: grid;
+
+}
+
+body {
+  /* display: grid; */
   min-width: 310px;
   padding: 0px;
 }
@@ -70,8 +83,8 @@ button {
   padding: 5px 10px;
   border-width: 2px;
   border-style: solid;
-  border-color: rgb(0, 0, 0);
-  color: black;
+  border-color: #27272a;
+  /* color: #27272a; */
 }
 
 #reset {
@@ -79,9 +92,20 @@ button {
 }
 
 .dark {
-  background-color: black;
-  border-color: #ebc941;
-  color: #ebc941
+  background-color: #27272a;
+  border-color: #f3f8f6;
+  color: #f3f8f6 
+}
+
+.symbol {
+  font-family: 'Noto Sans Symbols 2', sans-serif;
+  padding: 0px;
+    border: none;
+    width: max-content;
+}
+
+#dark-toggle {
+  font-size: 30px;
 }
 
 /* Noughts and Crosses */
@@ -99,19 +123,19 @@ button {
 }
 
 .hover {
-  color: black;
+  color: #27272a;
 }
 
 .O {
   background-color: #4caf50;
   border-color: #4caf50;
-  color: black;
+  color: #27272a;
 }
 
 .X {
   background-color: #b35c7d;
   border-color: #b35c7d;
-  color: black;
+  color: #27272a;
 }
 
 /* Memory Game */
@@ -131,7 +155,6 @@ img {
 .card-border {
   border-width: 2px;
   border-style: solid;
-  border-color: rgb(0, 0, 0);
   border-radius: 8px;
   padding: 0px;
   width: 16vw;
@@ -154,6 +177,9 @@ img {
 .show {
   opacity: 1
 }
+
+/* Dark mode */
+
 
 @media only screen and (min-width: 781px) {
 

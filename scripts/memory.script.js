@@ -1,4 +1,4 @@
-import { randomMessage, navigate, handleKeyDown } from "./utils.script.js";
+import { randomMessage, navigate, handleKeyDown, darkMode } from "./utils.script.js";
 import { getImages } from "../assets/images.js";
 import {
   noMatchMessages,
@@ -7,6 +7,7 @@ import {
 } from "../assets/messages.js";
 
 let heading = document.getElementById("heading");
+let toggle = document.getElementById("dark-toggle")
 let message = document.getElementById("player");
 let cards = document.querySelectorAll(".card");
 let reset = document.getElementById("reset");
@@ -97,9 +98,14 @@ reset.addEventListener("click", () => {
 });
 
 heading.addEventListener("click", () => {
-  darkMode(document)
+  darkMode()
   // navigate("index.html")
   // navigate("memory.html", 39)
+})
+
+toggle.addEventListener("click", () => {
+  // toggle.innerHTML = "☂"
+  darkMode(toggle)
 })
 
 addEventListener("keydown", (event) => {
