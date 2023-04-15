@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&display=swap");
 
 html {
   padding: 0px;
@@ -12,7 +12,6 @@ html::-webkit-scrollbar {
 
 /* #b43c51 Dark red*/
 
-
 * {
   margin: 0px;
   border-radius: 18px;
@@ -22,49 +21,13 @@ html::-webkit-scrollbar {
   font-family: "Share Tech Mono", monospace, sans-serif;
 }
 
-#grid-container {
-  display: grid;
-  height: 100vh;
-  padding: 0px;
-  /* grid-template-columns: 50px auto 50px;
-  grid-template-areas: "left main right"; */
-  /* grid-template-rows: auto; */
-  justify-content: center;
-  align-content: center;
-}
-
-nav {
-  display: grid;
-
-}
-
 body {
-  /* display: grid; */
   min-width: 310px;
   padding: 0px;
 }
 
-header {
-  display: flex;
-  justify-content: center;
-  margin: 5px 0px;
-}
-
-#heading {
-  text-align: center;
-  max-width: 320px;
-}
-
 h1 {
   font-size: 28px;
-}
-
-.game {
-  text-align: center;
-}
-
-#player {
-  margin: 10px;
 }
 
 h2 {
@@ -75,37 +38,106 @@ p {
   margin: 5px;
 }
 
-#playing-grid {
-  margin: 15px;
-}
-
 button {
   padding: 5px 10px;
   border-width: 2px;
   border-style: solid;
   border-color: #27272a;
-  /* color: #27272a; */
+}
+
+/* Grid */
+
+#grid-container {
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr;
+  grid-template-rows: 2fr 3fr 3fr;
+  height: 100vh;
+  padding: 0px;
+  justify-content: center;
+  align-content: center;
+}
+
+#left-area {
+  display: grid;
+  grid-area: 1 / 1 / 2 / 2;
+  justify-content: center;
+  align-items: end;
+}
+
+#right-area {
+  display: grid;
+  grid-area: 1 / 3 / 2 / 4;
+  justify-content: center;
+  align-items: end;
+}
+
+/* #dark-area {
+  grid-area: 1 / 3 / 2 / 4;
+  display: grid;
+  justify-content: start;
+  align-items: center;
+} */
+
+#header-area {
+  grid-area: 1 / 2 / 2 / 3;
+  display: grid;
+  justify-content: center;
+  align-items: end;
+}
+
+#game-area {
+  grid-area: 2 / 1 / 3 / 4;
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+#scores-area {
+  grid-area: 3 / 2 / 4 / 3;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+}
+
+/* Elements */
+
+#heading {
+  text-align: center;
+  max-width: 320px;
+}
+
+#dark-toggle {
+  visibility: hidden;
+}
+
+#player {
+  margin: 10px;
+}
+
+#playing-grid {
+  margin: 15px;
 }
 
 #reset {
   margin: 5px;
 }
 
+/* Classes */
+
 .dark {
   background-color: #27272a;
   border-color: #f3f8f6;
-  color: #f3f8f6 
+  color: #f3f8f6;
 }
 
 .symbol {
-  font-family: 'Noto Sans Symbols 2', sans-serif;
+  font-family: "Noto Sans Symbols 2", sans-serif;
   padding: 0px;
-    border: none;
-    width: max-content;
-}
-
-#dark-toggle {
-  font-size: 30px;
+  border: none;
+  width: max-content;
+  margin: 8px 0px;
 }
 
 /* Noughts and Crosses */
@@ -167,21 +199,72 @@ img {
 .card {
   width: 16vw;
   height: 18vw;
-  padding: 0px; 
+  padding: 0px;
   border-radius: 5px;
   max-width: 63px;
   max-height: 70px;
-  opacity: 0
+  opacity: 0;
 }
 
 .show {
-  opacity: 1
+  opacity: 1;
 }
 
 /* Dark mode */
 
-
 @media only screen and (min-width: 781px) {
+  /* Grid */
+
+  #grid-container {
+    grid-template-columns: 100px 1fr 100px;
+    grid-template-rows: 2fr 3fr 3fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+
+  #left-area {
+    display: grid;
+    grid-area: 2 / 1 / 3 / 2;
+    justify-content: end;
+    align-items: center;
+  }
+
+  #right-area {
+    display: grid;
+    grid-area: 2 / 3 / 3 / 4;
+    justify-content: start;
+    align-items: center;
+  }
+
+  #dark-area {
+    grid-area: 1 / 3 / 2 / 4;
+    display: grid;
+    justify-content: start;
+    align-items: center;
+  }
+
+  #header-area {
+    grid-area: 1 / 2 / 2 / 3;
+    display: grid;
+    justify-content: center;
+    align-items: end;
+  }
+
+  #game-area {
+    grid-area: 2 / 2 / 3 / 3;
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+
+  #scores-area {
+    grid-area: 3 / 2 / 4 / 3;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+  }
 
   #heading {
     max-width: 350px;
@@ -189,5 +272,81 @@ img {
 
   h1 {
     font-size: 35px;
+  }
+
+  #dark-toggle {
+    visibility:visible;
+    font-size: 30px;
+  }
+}
+
+@media only screen and (min-width: 1441px) {
+  /* Grid */
+  * {
+    background-color: #b35c7d;
+  }
+
+  #grid-container {
+    grid-template-columns: 100px 1fr 100px;
+    grid-template-rows: 2fr 3fr 3fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+
+  #left-area {
+    display: grid;
+    grid-area: 2 / 1 / 3 / 2;
+    justify-content: end;
+    align-items: center;
+  }
+
+  #right-area {
+    display: grid;
+    grid-area: 2 / 3 / 3 / 4;
+    justify-content: start;
+    align-items: center;
+  }
+
+  #dark-area {
+    grid-area: 1 / 3 / 2 / 4;
+    display: grid;
+    justify-content: start;
+    align-items: center;
+  }
+
+  #header-area {
+    grid-area: 1 / 2 / 2 / 3;
+    display: grid;
+    justify-content: center;
+    align-items: end;
+  }
+
+  #game-area {
+    grid-area: 2 / 2 / 3 / 3;
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+
+  #scores-area {
+    grid-area: 3 / 2 / 4 / 3;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+  }
+
+  #heading {
+    max-width: 350px;
+  }
+
+  h1 {
+    font-size: 35px;
+  }
+
+  #dark-toggle {
+    visibility:visible;
+    font-size: 30px;
   }
 }

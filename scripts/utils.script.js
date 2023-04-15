@@ -5,17 +5,17 @@ export const randomMessage = (arr) => {
 
 [];
 
-export const navigate = (url, key) => {
+export const navigate = (url, move) => {
   const pages = ["noughts-crosses.html", "memory.html"];
   let i =
     url === "index.html"
       ? Math.round(Math.random() * (pages.length - 1))
       : pages.indexOf(url);
 
-  if (key === 37) {
-    i = i === 0 ? pages.length - 1 : i - 1;
-  } else if (key === 39) {
-    i = i === pages.length - 1 ? 0 : i + 1;
+  if (move < 0) {
+    i = i === 0 ? pages.length - 1 : i + move;
+  } else if (move > 0) {
+    i = i === pages.length - 1 ? 0 : i + move;
   }
 
   parent.location = pages[i];
@@ -28,8 +28,10 @@ export const handleKeyDown = (url, key) => {
   // Tab: 9
   key === 9 || key === 38
     ? darkMode()
-    : key === 37 || key === 39
-    ? navigate(url, key)
+    : key === 37
+    ? navigate(url, -1)
+    : key === 39
+    ? navigate(url, 1)
     : key === 9
     ? console.log("Toggle between light and dark here")
     : console.log({ key });
@@ -37,9 +39,9 @@ export const handleKeyDown = (url, key) => {
 
 export const darkMode = () => {
   let elements = document.querySelectorAll("*");
-  let toggle = document.getElementById("dark-toggle")
+  let toggle = document.getElementById("dark-toggle");
 
-  toggle.innerHTML = toggle.classList.contains("dark") ? "☀" : "☂"
+  toggle.innerHTML = toggle.classList.contains("dark") ? "☀" : "☂";
 
   elements.forEach((element) => {
     element.classList.contains("dark")

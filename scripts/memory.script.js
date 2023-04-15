@@ -8,6 +8,8 @@ import {
 
 let heading = document.getElementById("heading");
 let toggle = document.getElementById("dark-toggle")
+let left = document.getElementById("left")
+let right = document.getElementById("right")
 let message = document.getElementById("player");
 let cards = document.querySelectorAll(".card");
 let reset = document.getElementById("reset");
@@ -99,13 +101,18 @@ reset.addEventListener("click", () => {
 
 heading.addEventListener("click", () => {
   darkMode()
-  // navigate("index.html")
-  // navigate("memory.html", 39)
 })
 
 toggle.addEventListener("click", () => {
-  // toggle.innerHTML = "☂"
-  darkMode(toggle)
+  darkMode()
+})
+
+left.addEventListener("click", () => {
+  navigate("memory.html", -1)
+})
+
+right.addEventListener("click", () => {
+  navigate("memory.html", 1)
 })
 
 addEventListener("keydown", (event) => {
