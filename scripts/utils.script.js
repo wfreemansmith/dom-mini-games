@@ -3,12 +3,27 @@ export const randomMessage = (arr) => {
   return arr[i];
 };
 
-[];
+export const getURL = () => {
+  const url = window.location.href.match(/[a-z\-]+\.html/g);
+  return url === null ? null : url[0]
+};
 
-export const navigate = (url, move) => {
+export const getQuery = () => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const mode = urlParams.get("mode");
+  return mode
+};
+
+export const navigate = (move) => {
   const pages = ["noughts-crosses.html", "memory.html"];
+  const grid = document.getElementById("grid-container");
+  const dark = grid.classList.contains("dark") ? "?mode=dark" : "";
+
+  const url = getURL()
+
   let i =
-    url === "index.html"
+    url === null
       ? Math.round(Math.random() * (pages.length - 1))
       : pages.indexOf(url);
 
@@ -18,10 +33,10 @@ export const navigate = (url, move) => {
     i = i === pages.length - 1 ? 0 : i + move;
   }
 
-  parent.location = pages[i];
+  parent.location = `${pages[i]}${dark}`;
 };
 
-export const handleKeyDown = (url, key) => {
+export const handleKeyDown = (key) => {
   // Spacebar: 32
   // Up: 38
   // Down: 40
@@ -29,11 +44,11 @@ export const handleKeyDown = (url, key) => {
   key === 9 || key === 38
     ? darkMode()
     : key === 37
-    ? navigate(url, -1)
+    ? navigate(-1)
     : key === 39
-    ? navigate(url, 1)
+    ? navigate(1)
     : key === 9
-    ? console.log("Toggle between light and dark here")
+    ? darkMode()
     : console.log({ key });
 };
 
@@ -44,8 +59,6 @@ export const darkMode = () => {
   toggle.innerHTML = toggle.classList.contains("dark") ? "☀" : "☂";
 
   elements.forEach((element) => {
-    element.classList.contains("dark")
-      ? element.classList.remove("dark")
-      : element.classList.add("dark");
+    element.classList.toggle("dark");
   });
 };

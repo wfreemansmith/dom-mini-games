@@ -1,9 +1,13 @@
-import { navigate, handleKeyDown, darkMode } from "./utils.script.js";
+import { navigate, handleKeyDown, darkMode, getQuery } from "./utils.script.js";
+
+// Finds dark mode from query and runs darkmode toggle
+// Ideally needs to run before page loads but if so cannot use darkMode...
+if (getQuery() === "dark") {darkMode()}
 
 let heading = document.getElementById("heading");
-let toggle = document.getElementById("dark-toggle")
-let left = document.getElementById("left")
-let right = document.getElementById("right")
+let toggle = document.getElementById("dark-toggle");
+let left = document.getElementById("left");
+let right = document.getElementById("right");
 let player = document.getElementById("player");
 let squares = document.querySelectorAll(".square");
 let reset = document.getElementById("reset");
@@ -16,7 +20,11 @@ let winner = false;
 tally.innerText = `O: ${totals.O} X: ${totals.X}`;
 
 function changeButton(square) {
-  if (square.innerText === "_" && !winner) {
+  if (
+    !square.classList.contains("O") &&
+    !square.classList.contains("X") &&
+    !winner
+  ) {
     square.innerText = playerTurn;
     square.classList.add(playerTurn);
 
@@ -42,9 +50,9 @@ function checkWinner() {
 
   for (let i = 0; i < winners.length; i++) {
     if (
-      squares[winners[i][0]].innerText === playerTurn &&
-      squares[winners[i][1]].innerText === playerTurn &&
-      squares[winners[i][2]].innerText === playerTurn
+      squares[winners[i][0]].classList.contains(playerTurn) &&
+      squares[winners[i][1]].classList.contains(playerTurn) &&
+      squares[winners[i][2]].classList.contains(playerTurn)
     ) {
       winner = true;
       player.innerText = `Victory for Player ${playerTurn}!`;
@@ -57,24 +65,34 @@ function checkWinner() {
 function resetButton() {
   winner = false;
   squares.forEach((square) => {
-    square.innerText = "_";
     square.classList.remove("O");
     square.classList.remove("X");
+    square.classList.remove("hover");
+    square.innerText = "_";
   });
+}
+
+function hover(square) {
+  if (
+    !square.classList.contains("O") &&
+    !square.classList.contains("X") &&
+    !winner
+  ) {
+    square.innerText = playerTurn;
+    square.classList.toggle("hover");
+  }
 }
 
 squares.forEach((square) => {
   square.addEventListener("click", () => {
     changeButton(square);
   });
-  // square.addEventListener("mouseover", () => {
-  //   square.innerText = playerTurn;
-  //   square.classList.add("hover");
-  // });
-  // square.addEventListener("mouseout", () => {
-  //   square.innerText = "_";
-  //   square.classList.remove("hover");
-  // });
+  square.addEventListener("mouseover", () => {
+    hover(square);
+  });
+  square.addEventListener("mouseout", () => {
+    hover(square);
+  });
 });
 
 reset.addEventListener("click", () => {
@@ -82,21 +100,21 @@ reset.addEventListener("click", () => {
 });
 
 heading.addEventListener("click", () => {
-  darkMode()
-})
+  darkMode();
+});
 
 toggle.addEventListener("click", () => {
-  darkMode()
-})
+  darkMode();
+});
 
 left.addEventListener("click", () => {
-  navigate("noughts-crosses.html", -1)
-})
+  navigate(-1);
+});
 
 right.addEventListener("click", () => {
-  navigate("noughts-crosses.html", 1)
-})
+  navigate(1);
+});
 
 addEventListener("keydown", (event) => {
-  handleKeyDown("noughts-crosses.html", event.keyCode)
+  handleKeyDown(event.keyCode);
 });

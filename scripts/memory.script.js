@@ -1,9 +1,13 @@
-import { randomMessage, navigate, handleKeyDown, darkMode } from "./utils.script.js";
+import { randomMessage, navigate, handleKeyDown, getQuery, darkMode } from "./utils.script.js";
 import { getImages } from "../assets/images.js";
 import {
   noMatchMessages,
   foundMatchMessages,
 } from "../assets/messages.js";
+
+// Finds dark mode from query and runs darkmode toggle
+// Ideally needs to run before page loads but if so cannot use darkMode...
+if (getQuery() === "dark") {darkMode()}
 
 let heading = document.getElementById("heading");
 let toggle = document.getElementById("dark-toggle")
@@ -106,13 +110,13 @@ toggle.addEventListener("click", () => {
 })
 
 left.addEventListener("click", () => {
-  navigate("memory.html", -1)
+  navigate(-1)
 })
 
 right.addEventListener("click", () => {
-  navigate("memory.html", 1)
+  navigate(1)
 })
 
 addEventListener("keydown", (event) => {
-  handleKeyDown("memory.html", event.keyCode)
+  handleKeyDown(event.keyCode)
 });

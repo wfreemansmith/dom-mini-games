@@ -17,8 +17,8 @@ Dark mode can be toggled on and off by using the ☀️ icon on the top right co
 
 Features implemented soon:
 - Additional games
-- Touch API / canvas for mobile
 - Keypad control of games
+
 
 ## Local set-up
 

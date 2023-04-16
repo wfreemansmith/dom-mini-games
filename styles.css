@@ -17,8 +17,10 @@ html::-webkit-scrollbar {
   border-radius: 18px;
   background-color: #ebc941;
   color: #27272a;
+  border-color: #27272a;
   padding: 5px;
   font-family: "Share Tech Mono", monospace, sans-serif;
+  transition: background-color 0.5s, color 0.5s, border-color 0.5s;
 }
 
 body {
@@ -42,7 +44,6 @@ button {
   padding: 5px 10px;
   border-width: 2px;
   border-style: solid;
-  border-color: #27272a;
 }
 
 /* Grid */
@@ -70,13 +71,6 @@ button {
   justify-content: center;
   align-items: end;
 }
-
-/* #dark-area {
-  grid-area: 1 / 3 / 2 / 4;
-  display: grid;
-  justify-content: start;
-  align-items: center;
-} */
 
 #header-area {
   grid-area: 1 / 2 / 2 / 3;
@@ -162,12 +156,14 @@ button {
   background-color: #4caf50;
   border-color: #4caf50;
   color: #27272a;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
 .X {
   background-color: #b35c7d;
   border-color: #b35c7d;
   color: #27272a;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
 /* Memory Game */
@@ -204,6 +200,7 @@ img {
   max-width: 63px;
   max-height: 70px;
   opacity: 0;
+  transition: opacity 0.2s
 }
 
 .show {
