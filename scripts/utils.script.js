@@ -37,7 +37,7 @@ export const navigate = (move, hue) => {
     i = i === pages.length - 1 ? 0 : i + move;
   }
 
-  // parent.location = `${pages[i]}${q}${dark}${and}${colour}`;
+  parent.location = `${pages[i]}${q}${dark}${and}${colour}`;
 };
 
 export const handleKeyDown = (key) => {
@@ -68,7 +68,6 @@ export const darkMode = () => {
 export const changeHue = (hue = 48, shift) => {
   if (!Number.isInteger(+hue)) return 
 
-  console.log("changeHue", {hue, shift})
   if (shift) hue += shift;
   document.body.style.backgroundColor = `hsl(${hue}, 81%, 59%)`;
   return hue

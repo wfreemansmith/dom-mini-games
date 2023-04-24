@@ -15,9 +15,12 @@ On loading, the site chooses a random game for you. Players can navigate between
 
 Dark mode can be toggled on and off by using the ☀️ icon on the top right corner of the screen or by pressing the `Tab` key. On mobile, you can tap the header to the same effect.
 
+On desktop the background hue can be cycled through by using the mousewheel, or using two fingers on a trackpad. You can revert to the original colour scheme by double-clicking the reset button.
+
 Features implemented soon:
 - Additional games
 - Keypad control of games
+- Increased touch functionality for mobile
 
 
 ## Local set-up
