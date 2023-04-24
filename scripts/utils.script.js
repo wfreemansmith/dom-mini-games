@@ -21,8 +21,8 @@ export const navigate = (move, hue) => {
 
   const dark = grid.classList.contains("dark") ? "mode=dark" : "";
   const colour = hue ? `hue=${hue}` : ""
-  const q = dark.length > 0 || hue > 0 ? "?" : "";
-  const and = dark.length > 0 && hue > 0 ? "&" : "";
+  const q = dark.length > 0 || hue ? "?" : "";
+  const and = dark.length > 0 && hue ? "&" : "";
 
   const url = getURL();
 
@@ -37,7 +37,7 @@ export const navigate = (move, hue) => {
     i = i === pages.length - 1 ? 0 : i + move;
   }
 
-  parent.location = `${pages[i]}${q}${dark}${and}${colour}`;
+  // parent.location = `${pages[i]}${q}${dark}${and}${colour}`;
 };
 
 export const handleKeyDown = (key) => {
