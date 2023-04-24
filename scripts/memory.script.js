@@ -1,13 +1,17 @@
-import { randomMessage, navigate, handleKeyDown, getQuery, darkMode } from "./utils.script.js";
+import { randomMessage, navigate, handleKeyDown, getQuery, darkMode, changeHue } from "./utils.script.js";
 import { getImages } from "../assets/images.js";
 import {
   noMatchMessages,
   foundMatchMessages,
 } from "../assets/messages.js";
 
-// Finds dark mode from query and runs darkmode toggle
-// Ideally needs to run before page loads but if so cannot use darkMode...
-if (getQuery() === "dark") {darkMode()}
+let { mode, hue } = getQuery();
+
+if (mode === "dark") {
+  darkMode();
+} else if (hue) {
+  hue = changeHue(hue);
+}
 
 let heading = document.getElementById("heading");
 let toggle = document.getElementById("dark-toggle")
@@ -101,6 +105,10 @@ reset.addEventListener("click", () => {
   resetButton();
 });
 
+reset.addEventListener("dblclick", () => {
+  changeHue()
+})
+
 heading.addEventListener("click", () => {
   darkMode()
 })
@@ -110,13 +118,18 @@ toggle.addEventListener("click", () => {
 })
 
 left.addEventListener("click", () => {
-  navigate(-1)
+  navigate(-1, hue)
 })
 
 right.addEventListener("click", () => {
-  navigate(1)
+  navigate(1, hue)
 })
 
 addEventListener("keydown", (event) => {
   handleKeyDown(event.keyCode)
 });
+
+window.addEventListener("wheel", (event) => {
+  let colour = !hue ? 48 : hue;
+  hue = event.deltaY < 0 ? changeHue(colour, 10) : changeHue(colour, -10)
+})

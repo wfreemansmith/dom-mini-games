@@ -4,6 +4,7 @@ html {
   padding: 0px;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  overflow: hidden;
 }
 
 html::-webkit-scrollbar {
@@ -15,7 +16,7 @@ html::-webkit-scrollbar {
 * {
   margin: 0px;
   border-radius: 18px;
-  background-color: #ebc941;
+  /* background-color: #ebc941; */
   color: #27272a;
   border-color: #27272a;
   padding: 5px;
@@ -24,8 +25,10 @@ html::-webkit-scrollbar {
 }
 
 body {
+  background-color: hsl(48, 81%, 59%);
   min-width: 310px;
   padding: 0px;
+  
 }
 
 h1 {
@@ -41,6 +44,7 @@ p {
 }
 
 button {
+  background-color: transparent;
   padding: 5px 10px;
   border-width: 2px;
   border-style: solid;

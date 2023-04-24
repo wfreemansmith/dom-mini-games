@@ -1,30 +1,34 @@
-export const randomMessage = (arr) => {
-  const i = Math.round(Math.random() * (arr.length - 1));
-  return arr[i];
-};
-
 export const getURL = () => {
   const url = window.location.href.match(/[a-z\-]+\.html/g);
-  return url === null ? null : url[0]
+  return url === null ? null : url[0];
 };
 
 export const getQuery = () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const mode = urlParams.get("mode");
-  return mode
+  const hue = urlParams.get("hue");
+  return {mode, hue};
 };
 
-export const navigate = (move) => {
+export const randomise = (arr) => {
+  return Math.round(Math.random() * (arr.length - 1))
+}
+
+export const navigate = (move, hue) => {
   const pages = ["noughts-crosses.html", "memory.html"];
   const grid = document.getElementById("grid-container");
-  const dark = grid.classList.contains("dark") ? "?mode=dark" : "";
 
-  const url = getURL()
+  const dark = grid.classList.contains("dark") ? "mode=dark" : "";
+  const colour = hue ? `hue=${hue}` : ""
+  const q = dark.length > 0 || hue > 0 ? "?" : "";
+  const and = dark.length > 0 && hue > 0 ? "&" : "";
+
+  const url = getURL();
 
   let i =
     url === null
-      ? Math.round(Math.random() * (pages.length - 1))
+      ? randomise(pages)
       : pages.indexOf(url);
 
   if (move < 0) {
@@ -33,7 +37,7 @@ export const navigate = (move) => {
     i = i === pages.length - 1 ? 0 : i + move;
   }
 
-  parent.location = `${pages[i]}${dark}`;
+  parent.location = `${pages[i]}${q}${dark}${and}${colour}`;
 };
 
 export const handleKeyDown = (key) => {
@@ -47,8 +51,6 @@ export const handleKeyDown = (key) => {
     ? navigate(-1)
     : key === 39
     ? navigate(1)
-    : key === 9
-    ? darkMode()
     : console.log({ key });
 };
 
@@ -61,4 +63,18 @@ export const darkMode = () => {
   elements.forEach((element) => {
     element.classList.toggle("dark");
   });
+};
+
+export const changeHue = (hue = 48, shift) => {
+  if (!Number.isInteger(+hue)) return 
+
+  console.log("changeHue", {hue, shift})
+  if (shift) hue += shift;
+  document.body.style.backgroundColor = `hsl(${hue}, 81%, 59%)`;
+  return hue
+}
+
+export const randomMessage = (messages) => {
+  const i = randomise(messages);
+  return messages[i];
 };
