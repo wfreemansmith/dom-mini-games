@@ -17,7 +17,7 @@ let heading = document.getElementById("heading");
 let toggle = document.getElementById("dark-toggle")
 let left = document.getElementById("left")
 let right = document.getElementById("right")
-let message = document.getElementById("player");
+let player = document.getElementById("player");
 let cards = document.querySelectorAll(".card");
 let reset = document.getElementById("reset");
 let tally = document.getElementById("tally");
@@ -50,15 +50,17 @@ function chooseCard(card) {
 
 function checkMatch() {
   if (checkWinner()) {
-    message.innerHTML = "You win!";
+    player.innerHTML = "You win!";
     winner = true;
+
+    showGithub()
+
   } else if (imgs[choiceA] === imgs[choiceB]) {
-    console.log(checkWinner());
-    message.innerHTML = randomMessage(foundMatchMessages);
+    player.innerHTML = randomMessage(foundMatchMessages);
     choiceA = null;
     choiceB = null;
   } else {
-    message.innerHTML = randomMessage(noMatchMessages);
+    player.innerHTML = randomMessage(noMatchMessages);
   }
   tally.innerText = `Turns: ${++turns}`;
 }
@@ -92,7 +94,7 @@ function resetButton() {
     card.classList.remove("show");
     card.classList.remove("show");
   });
-  message.innerHTML = "Solo player";
+  player.innerHTML = "Solo player";
 }
 
 cards.forEach((card) => {
@@ -106,15 +108,15 @@ reset.addEventListener("click", () => {
 });
 
 reset.addEventListener("dblclick", () => {
-  changeHue()
+  hue = changeHue()
 })
 
 heading.addEventListener("click", () => {
-  darkMode()
+  hue = darkMode(hue)
 })
 
 toggle.addEventListener("click", () => {
-  darkMode()
+  hue = darkMode(hue)
 })
 
 left.addEventListener("click", () => {

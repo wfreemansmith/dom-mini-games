@@ -37,6 +37,8 @@ export const navigate = (move, hue) => {
     i = i === pages.length - 1 ? 0 : i + move;
   }
 
+  console.log(hue)
+
   parent.location = `${pages[i]}${q}${dark}${and}${colour}`;
 };
 
@@ -55,6 +57,7 @@ export const handleKeyDown = (key) => {
 };
 
 export const darkMode = () => {
+  let background = document.querySelector(".background")
   let elements = document.querySelectorAll("*");
   let toggle = document.getElementById("dark-toggle");
 
@@ -63,11 +66,18 @@ export const darkMode = () => {
   elements.forEach((element) => {
     element.classList.toggle("dark");
   });
+  
+  background.classList.toggle("dark-background");
+  return changeHue()
 };
 
-export const changeHue = (hue = 48, shift) => {
-  if (!Number.isInteger(+hue)) return 
+export const changeHue = (hue, shift) => {
+  if (!Number.isInteger(+hue) || !hue) {
+    document.body.style.backgroundColor = ""
+    return null  
+  }
 
+  Number.parseInt(hue)
   if (shift) hue += shift;
   document.body.style.backgroundColor = `hsl(${hue}, 81%, 59%)`;
   return hue
@@ -77,3 +87,17 @@ export const randomMessage = (messages) => {
   const i = randomise(messages);
   return messages[i];
 };
+
+export const showGithub = () => {
+  let target = document.getElementById("total");
+
+  const changeText = () => {
+    const innerHTML =  'Project repo found of <a href="https://github.com/wfreemansmith/dom-mini-games" target="_blank">Github</a>'
+    
+    // To add: long fade between text
+    target.classList.add("long-fade")
+    target.innerHTML = innerHTML  
+  }
+
+  setTimeout(changeText, 3000);
+}

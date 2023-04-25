@@ -4,6 +4,7 @@ import {
   darkMode,
   getQuery,
   changeHue,
+  showGithub,
 } from "./utils.script.js";
 
 let { mode, hue } = getQuery();
@@ -67,6 +68,7 @@ function checkWinner() {
       winner = true;
       player.innerText = `Victory for Player ${playerTurn}!`;
       totals[playerTurn]++;
+      if (totals.O + totals.X === 2) showGithub()
       tally.innerText = `O: ${totals.O} X: ${totals.X}`;
     }
   }
@@ -109,15 +111,15 @@ reset.addEventListener("click", () => {
 });
 
 reset.addEventListener("dblclick", () => {
-  changeHue()
+  hue = changeHue()
 })
 
 heading.addEventListener("click", () => {
-  darkMode();
+  hue = darkMode();
 });
 
 toggle.addEventListener("click", () => {
-  darkMode();
+  hue = darkMode();
 });
 
 left.addEventListener("click", () => {

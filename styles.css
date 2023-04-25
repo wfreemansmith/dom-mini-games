@@ -28,7 +28,6 @@ body {
   background-color: hsl(48, 81%, 59%);
   min-width: 310px;
   padding: 0px;
-  
 }
 
 h1 {
@@ -60,6 +59,7 @@ button {
   padding: 0px;
   justify-content: center;
   align-content: center;
+  border-radius: 0px;
 }
 
 #left-area {
@@ -125,17 +125,19 @@ button {
 /* Classes */
 
 .dark {
-  background-color: #27272a;
   border-color: #f3f8f6;
   color: #f3f8f6;
 }
 
+.dark-background {
+  background-color: #27272a;
+}
+
 .symbol {
   font-family: "Noto Sans Symbols 2", sans-serif;
-  padding: 0px;
+  padding: 15px;
   border: none;
   width: max-content;
-  margin: 8px 0px;
 }
 
 /* Noughts and Crosses */
@@ -210,8 +212,6 @@ img {
 .show {
   opacity: 1;
 }
-
-/* Dark mode */
 
 @media only screen and (min-width: 781px) {
   /* Grid */
