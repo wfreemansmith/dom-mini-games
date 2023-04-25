@@ -52,9 +52,7 @@ function checkMatch() {
   if (checkWinner()) {
     player.innerHTML = "You win!";
     winner = true;
-
     showGithub()
-
   } else if (imgs[choiceA] === imgs[choiceB]) {
     player.innerHTML = randomMessage(foundMatchMessages);
     choiceA = null;

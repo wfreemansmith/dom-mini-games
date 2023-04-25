@@ -8,36 +8,37 @@ export const getQuery = () => {
   const urlParams = new URLSearchParams(queryString);
   const mode = urlParams.get("mode");
   const hue = urlParams.get("hue");
-  return {mode, hue};
+  return { mode, hue };
 };
 
 export const randomise = (arr) => {
-  return Math.round(Math.random() * (arr.length - 1))
-}
+  return Math.round(Math.random() * (arr.length - 1));
+};
 
-export const navigate = (move, hue) => {
-  const pages = ["noughts-crosses.html", "memory.html"];
+const getParams = (hue) => {
   const grid = document.getElementById("grid-container");
 
   const dark = grid.classList.contains("dark") ? "mode=dark" : "";
-  const colour = hue ? `hue=${hue}` : ""
+  const colour = hue ? `hue=${hue}` : "";
   const q = dark.length > 0 || hue ? "?" : "";
   const and = dark.length > 0 && hue ? "&" : "";
 
-  const url = getURL();
+  return { dark, colour, q, and };
+};
 
-  let i =
-    url === null
-      ? randomise(pages)
-      : pages.indexOf(url);
+export const navigate = (move, hue) => {
+  const pages = ["noughts-crosses.html", "memory.html"];
+
+  const url = getURL();
+  const { dark, colour, q, and } = getParams(hue);
+
+  let i = url === null ? randomise(pages) : pages.indexOf(url);
 
   if (move < 0) {
     i = i === 0 ? pages.length - 1 : i + move;
   } else if (move > 0) {
     i = i === pages.length - 1 ? 0 : i + move;
   }
-
-  console.log(hue)
 
   parent.location = `${pages[i]}${q}${dark}${and}${colour}`;
 };
@@ -57,7 +58,7 @@ export const handleKeyDown = (key) => {
 };
 
 export const darkMode = () => {
-  let background = document.querySelector(".background")
+  let background = document.querySelector(".background");
   let elements = document.querySelectorAll("*");
   let toggle = document.getElementById("dark-toggle");
 
@@ -66,22 +67,22 @@ export const darkMode = () => {
   elements.forEach((element) => {
     element.classList.toggle("dark");
   });
-  
+
   background.classList.toggle("dark-background");
-  return changeHue()
+  return changeHue();
 };
 
 export const changeHue = (hue, shift) => {
   if (!Number.isInteger(+hue) || !hue) {
-    document.body.style.backgroundColor = ""
-    return null  
+    document.body.style.backgroundColor = "";
+    return null;
   }
 
-  Number.parseInt(hue)
+  Number.parseInt(hue);
   if (shift) hue += shift;
   document.body.style.backgroundColor = `hsl(${hue}, 81%, 59%)`;
-  return hue
-}
+  return hue;
+};
 
 export const randomMessage = (messages) => {
   const i = randomise(messages);
@@ -92,12 +93,13 @@ export const showGithub = () => {
   let target = document.getElementById("total");
 
   const changeText = () => {
-    const innerHTML =  'Project repo found of <a href="https://github.com/wfreemansmith/dom-mini-games" target="_blank">Github</a>'
-    
+    const innerHTML =
+      'Project repo found of <a href="https://github.com/wfreemansmith/dom-mini-games" target="_blank">Github</a>';
+
     // To add: long fade between text
-    target.classList.add("long-fade")
-    target.innerHTML = innerHTML  
-  }
+    target.classList.add("long-fade");
+    target.innerHTML = innerHTML;
+  };
 
   setTimeout(changeText, 3000);
-}
+};
