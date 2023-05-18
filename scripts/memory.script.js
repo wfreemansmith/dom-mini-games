@@ -1,9 +1,13 @@
-import { randomMessage, navigate, handleKeyDown, getQuery, darkMode, changeHue } from "./utils.script.js";
-import { getImages } from "../assets/images.js";
 import {
-  noMatchMessages,
-  foundMatchMessages,
-} from "../assets/messages.js";
+  randomItem,
+  navigate,
+  handleKeyDown,
+  getQuery,
+  darkMode,
+  changeHue,
+} from "./utils.script.js";
+import { getImages } from "../assets/images.js";
+import { noMatchMessages, foundMatchMessages } from "../assets/messages.js";
 
 let { mode, hue } = getQuery();
 
@@ -14,9 +18,9 @@ if (mode === "dark") {
 }
 
 let heading = document.getElementById("heading");
-let toggle = document.getElementById("dark-toggle")
-let left = document.getElementById("left")
-let right = document.getElementById("right")
+let toggle = document.getElementById("dark-toggle");
+let left = document.getElementById("left");
+let right = document.getElementById("right");
 let player = document.getElementById("player");
 let cards = document.querySelectorAll(".card");
 let reset = document.getElementById("reset");
@@ -52,13 +56,13 @@ function checkMatch() {
   if (checkWinner()) {
     player.innerHTML = "You win!";
     winner = true;
-    showGithub()
+    showGithub();
   } else if (imgs[choiceA] === imgs[choiceB]) {
-    player.innerHTML = randomMessage(foundMatchMessages);
+    player.innerHTML = randomItem(foundMatchMessages);
     choiceA = null;
     choiceB = null;
   } else {
-    player.innerHTML = randomMessage(noMatchMessages);
+    player.innerHTML = randomItem(noMatchMessages);
   }
   tally.innerText = `Turns: ${++turns}`;
 }
@@ -106,30 +110,30 @@ reset.addEventListener("click", () => {
 });
 
 reset.addEventListener("dblclick", () => {
-  hue = changeHue()
-})
+  hue = changeHue();
+});
 
 heading.addEventListener("click", () => {
-  hue = darkMode(hue)
-})
+  hue = darkMode(hue);
+});
 
 toggle.addEventListener("click", () => {
-  hue = darkMode(hue)
-})
+  hue = darkMode(hue);
+});
 
 left.addEventListener("click", () => {
-  navigate(-1, hue)
-})
+  navigate(-1, hue);
+});
 
 right.addEventListener("click", () => {
-  navigate(1, hue)
-})
+  navigate(1, hue);
+});
 
 addEventListener("keydown", (event) => {
-  handleKeyDown(event.keyCode)
+  handleKeyDown(event.keyCode);
 });
 
 window.addEventListener("wheel", (event) => {
   let colour = !hue ? 48 : hue;
-  hue = event.deltaY < 0 ? changeHue(colour, 10) : changeHue(colour, -10)
-})
+  hue = event.deltaY < 0 ? changeHue(colour, 10) : changeHue(colour, -10);
+});

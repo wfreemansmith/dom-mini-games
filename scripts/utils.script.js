@@ -15,7 +15,7 @@ export const randomise = (arr) => {
   return Math.round(Math.random() * (arr.length - 1));
 };
 
-const getParams = (hue) => {
+const createParams = (hue) => {
   const grid = document.getElementById("grid-container");
 
   const dark = grid.classList.contains("dark") ? "mode=dark" : "";
@@ -30,7 +30,7 @@ export const navigate = (move, hue) => {
   const pages = ["noughts-crosses.html", "memory.html"];
 
   const url = getURL();
-  const { dark, colour, q, and } = getParams(hue);
+  const { dark, colour, q, and } = createParams(hue);
 
   let i = url === null ? randomise(pages) : pages.indexOf(url);
 
@@ -84,9 +84,9 @@ export const changeHue = (hue, shift) => {
   return hue;
 };
 
-export const randomMessage = (messages) => {
-  const i = randomise(messages);
-  return messages[i];
+export const randomItem = (item) => {
+  const i = randomise(item);
+  return item[i];
 };
 
 export const showGithub = () => {

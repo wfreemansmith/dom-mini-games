@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simon Says</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script type="module" src="./scripts/simon.script.js" defer></script>
+  </head>
+  <div id="grid-container">
+    <div id="dark-area">
+      <button id="dark-toggle" class="symbol">☀</button>
+    </div>
+    <div id="left-area">
+      <button id="left" class="symbol">🭮</button>
+    </div>
+    <div id="right-area">
+      <button id="right" class="symbol">🭬</button>
+    </div>
+
+    <body class="background">
+      <header id="header-area">
+        <h1 id="heading">Simon Says</h1>
+      </header>
+
+      <section id="game-area">
+        <h2 id="player">[ <span id="guesses"></span> ]</h2> 
+        <div id="simon-grid">
+          <button id="start" class="glyph-button">⏩</button>
+        </div>
+      </section>
+      <section id="scores-area">
+        <button id="reset">reset</button>
+
+        <p id="total">Totals</p>
+        <p id="tally">Turns: 0</p>
+      </section>
+    </body>
+  </div>
+</html>

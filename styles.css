@@ -213,6 +213,33 @@ img {
   opacity: 1;
 }
 
+/* Simon Says */
+
+.glyph-button {
+  width: 16vw;
+  height: 18vw;
+  max-width: 63px;
+  max-height: 70px;
+  text-align: center;
+  display: inline-block;
+  font-family: "Noto Sans Symbols 2", sans-serif;
+  font-size: 24px;
+  margin: 5px;
+}
+
+#simon-grid {
+  margin: 15px;
+  height: 237px
+}
+
+#simon-says {
+  font-size: 12em;
+}
+
+.blink {
+  color: transparent;
+}
+
 @media only screen and (min-width: 781px) {
   /* Grid */
 
