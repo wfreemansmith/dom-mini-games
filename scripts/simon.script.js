@@ -7,17 +7,22 @@ import {
   randomItem,
 } from "./utils.script.js";
 import { setGlyphs } from "../assets/glyphs.js";
-import { buttonGrid, startButton, simonSays } from "../assets/simon.js";
+import {
+  buttonGrid,
+  startButton,
+  simonSays,
+  guessesPanel,
+  gameOver,
+} from "../assets/simon.js";
 
 let heading = document.getElementById("heading");
 let toggle = document.getElementById("dark-toggle");
 let left = document.getElementById("left");
 let right = document.getElementById("right");
 let reset = document.getElementById("reset");
-let start = document.getElementById("start");
 let grid = document.getElementById("simon-grid");
 let player = document.getElementById("player");
-let guesses = document.getElementById("guesses");
+let tally = document.getElementById("tally");
 
 let { mode, hue } = getQuery();
 
@@ -27,18 +32,11 @@ if (mode === "dark") {
   hue = changeHue(hue);
 }
 
+let pause = false;
 let round = 3;
-// 'turn' or 'round' - amount of images displayed each turn. increments by one each turn, or by two later in the glyph
-
 let timer = 1000;
-// how long the image stays on screen for. decrement with each turn
-
-// use a for loop to cycle through the /buttons/ for /turn/ number of times, showing each by /timer/ amount of seconds. Use delay function (async)
-// user input is 9 or 12 images in a grid the player must pick in chronological order
-// chosen images are shown above in the 'player' area
-
+let lives = 3;
 const playerGuess = [];
-// if playerGuess deeply equals buttons then go to next round
 
 let set = "pics";
 const glyphs = setGlyphs(set);
@@ -53,30 +51,25 @@ function setSequence() {
   }
 }
 
-function displayButtons() {
-  grid.innerHTML = buttonGrid;
-  let buttons = document.querySelectorAll(".glyph-button");
+function displayStart() {
+  player.innerText = `Repeat the symbols in order`;
+  grid.innerHTML = startButton;
+  checkDark();
 
-  for (let i = 0; i < glyphs.length; i++) {
-    buttons[i].innerText = glyphs[i];
-  }
+  let start = document.getElementById("start");
 
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      if (checkInput()) {
-        playerGuess.push(button.innerText);
-        guesses.innerText += ` ${button.innerText} `;
-        if (playerGuess.length >= round) wonRound();
-      } else {
-        // Do something with the wrong answer!
-      }
-    });
+  start.addEventListener("click", () => {
+    player.innerText = `Get ready...`;
+    setTimeout(displaySequence, 1000);
   });
 }
 
 function displaySequence() {
+  pause = false;
   grid.innerHTML = simonSays;
-  guesses.innerText = "";
+  player.innerText = `Round ${round - 2}!`;
+  tally.innerText = `Lives: ${lives}`;
+  checkDark();
 
   let glyph = document.getElementById("simon-says");
 
@@ -95,24 +88,100 @@ function displaySequence() {
   runSequence();
 }
 
-function checkInput() {
-  return true;
+function displayButtons() {
+  grid.innerHTML = buttonGrid;
+  player.innerHTML = guessesPanel;
+  checkDark();
+
+  let guesses = document.getElementById("guesses");
+  let buttons = document.querySelectorAll(".glyph-button");
+
+  for (let i = 0; i < glyphs.length; i++) {
+    buttons[i].innerText = glyphs[i];
+  }
+
+  const minusLife = () => {
+    lives--;
+    tally.innerText = `Lives: ${lives}`;
+    if (!lives) displayGameOver();
+  };
+
+  const guessCorrect = (glyph) => {
+    playerGuess.push(glyph);
+    guesses.innerText += ` ${glyph} `;
+    if (playerGuess.length >= round) wonRound();
+  };
+
+  const guessIncorrect = (button) => {
+    minusLife();
+    button.classList.add("wrong");
+    setTimeout(() => button.classList.remove("wrong"), 500);
+  };
+
+  buttons.forEach((button) => {
+    const handleClick = () => {
+      const glyph = button.innerText;
+      if (pause) return;
+      glyph === sequence[playerGuess.length]
+        ? guessCorrect(glyph)
+        : guessIncorrect(button);
+    };
+
+    button.addEventListener("click", handleClick);
+  });
 }
 
 function wonRound() {
-  guesses.innerText = " That's right! ";
+  player.innerText = `That's right!`;
+
+  hue = changeHue(100);
   playerGuess.length = 0;
   round++;
   timer -= 100;
-  console.log(timer);
-  setTimeout(displaySequence, 3000);
+  pause = true;
+  lives = 3;
+  setTimeout(() => {
+    console.log(checkDark())
+    // Need to sort this out
+    checkDark() ? darkMode(hue) : changeHue();
+    player.innerText = `Get ready...`;
+  }, 2000);
+  setTimeout(displaySequence, 3250);
+}
+
+function displayGameOver() {
+  grid.innerHTML = gameOver;
+  player.innerHTML = `Game over!`;
+  checkDark();
+}
+
+function checkDark() {
+  let toggle = document.getElementById("dark-toggle");
+  if (toggle.classList.contains("dark")) {
+    let elements = document.querySelectorAll("*");
+    elements.forEach((element) => {
+      element.classList.add("dark");
+    });
+    return true;
+  }
+}
+
+function resetButton() {
+  pause = false;
+  round = 3;
+  timer = 1000;
+  lives = 3;
+  playerGuess.length = 0;
+
+  sequence.length = 0;
+  tally.innerText = `Lives: ${lives}`;
+
+  setSequence();
+  displayStart();
 }
 
 setSequence();
-
-start.addEventListener("click", () => {
-  displaySequence();
-});
+displayStart();
 
 reset.addEventListener("click", () => {
   resetButton();
@@ -142,7 +211,7 @@ addEventListener("keydown", (event) => {
   handleKeyDown(event.keyCode);
 });
 
-window.addEventListener("wheel", (event) => {
-  let colour = !hue ? 48 : hue;
-  hue = event.deltaY < 0 ? changeHue(colour, 10) : changeHue(colour, -10);
-});
+// window.addEventListener("wheel", (event) => {
+//   let colour = !hue ? 48 : hue;
+//   hue = event.deltaY < 0 ? changeHue(colour, 10) : changeHue(colour, -10);
+// });

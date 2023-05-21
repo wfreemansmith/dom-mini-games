@@ -27,7 +27,7 @@ const createParams = (hue) => {
 };
 
 export const navigate = (move, hue) => {
-  const pages = ["noughts-crosses.html", "memory.html"];
+  const pages = ["noughts-crosses.html", "memory.html", "simon.html"];
 
   const url = getURL();
   const { dark, colour, q, and } = createParams(hue);
