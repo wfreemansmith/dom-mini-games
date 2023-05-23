@@ -5,7 +5,7 @@ For this project I created a suite of mini-games using only HTML, CSS and vanill
 Games currently available:
 - Noughts and Crosses
 - Matching Pairs
-- More on their way...
+- Simon Says
 
 There is a hosted version of the site here: https://noughts-wfs.netlify.app/
 
@@ -18,7 +18,6 @@ Dark mode can be toggled on and off by using the ☀️ icon on the top right co
 On desktop the background hue can be cycled through by using the mousewheel, or using two fingers on a trackpad. You can revert to the original colour scheme by double-clicking the reset button.
 
 Features implemented soon:
-- Additional games
 - Keypad control of games
 - Increased touch functionality for mobile
 

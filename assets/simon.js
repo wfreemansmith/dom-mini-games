@@ -13,4 +13,4 @@ export const simonSays = `<p id="simon-says" class="noto-sans"></p>`;
 
 export const gameOver = `<p id="simon-says" class="noto-sans">🕱</p>`
 
-export const guessesPanel = `[ <span id="guesses"></span> ]`
+export const guessesPanel = `[ <span id="guesses" class="noto-sans"></span> ]`

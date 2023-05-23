@@ -23,7 +23,7 @@ let reset = document.getElementById("reset");
 let grid = document.getElementById("simon-grid");
 let player = document.getElementById("player");
 let tally = document.getElementById("tally");
-let setToggle = document.getElementById("set-toggle")
+let setToggle = document.getElementById("set-toggle");
 
 let { mode, hue } = getQuery();
 
@@ -39,7 +39,7 @@ let timer = 1000;
 let lives = 3;
 const playerGuess = [];
 
-let setIndex = 0
+let setIndex = 0;
 let set = "🍽";
 let glyphs = setGlyphs(set);
 const sequence = [];
@@ -99,6 +99,7 @@ function displayButtons() {
   let buttons = document.querySelectorAll(".glyph-button");
 
   for (let i = 0; i < glyphs.length; i++) {
+    console.log("buttons", buttons[0])
     buttons[i].innerText = glyphs[i];
   }
 
@@ -168,13 +169,13 @@ function checkDark() {
 }
 
 function handleSet() {
-  setIndex = setIndex < 3 ? setIndex + 1 : 0
-  const sets = ["🍽", "🬗", "🭫", "●"]
-  set = sets[setIndex]
-  glyphs = setGlyphs(set)
-  setToggle.innerText = set
-  sequence.length = 0
-  setSequence()
+  setIndex = setIndex < 3 ? setIndex + 1 : 0;
+  const sets = ["🍽", "🬗", "🭫", "●"];
+  set = sets[setIndex];
+  glyphs = setGlyphs(set);
+  setToggle.innerText = set;
+  sequence.length = 0;
+  setSequence();
 }
 
 function resetButton() {
@@ -195,8 +196,8 @@ setSequence();
 displayStart();
 
 setToggle.addEventListener("click", () => {
-  handleSet()
-})
+  handleSet();
+});
 
 reset.addEventListener("click", () => {
   resetButton();
