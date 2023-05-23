@@ -16,8 +16,8 @@ html::-webkit-scrollbar {
 * {
   margin: 0px;
   border-radius: 18px;
-  color: hsl(240, 4, 16);
-  border-color: hsl(240, 4, 16);
+  color: hsl(240, 4%, 16%);
+  border-color: hsl(240, 4%, 16%);
   padding: 5px;
   font-family: "Share Tech Mono", monospace, sans-serif;
   transition: background-color 0.5s, color 0.5s, border-color 0.5s;
@@ -140,12 +140,12 @@ button {
 /* Classes */
 
 .dark {
-  border-color: hsl(156, 26, 96);
-  color: hsl(156, 26, 96);
+  border-color: hsl(156, 26%, 96%);
+  color: hsl(156, 26%, 96%);
 }
 
 .dark-background {
-  background-color: hsl(240, 4, 16);
+  background-color: hsl(240, 4%, 16%);
 }
 
 .symbol {
@@ -169,20 +169,20 @@ button {
 }
 
 .hover {
-  color: hsl(240, 4, 16);
+  color: hsl(240, 4%, 16%);
 }
 
 .O {
-  background-color: hsl(122, 39, 49);
-  border-color: hsl(122, 39, 49);
-  color: hsl(240, 4, 16);
+  background-color: hsl(122, 39%, 49%);
+  border-color: hsl(122, 39%, 49%);
+  color: hsl(240, 4%, 16%);
   transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
 .X {
   background-color: hsl(337, 36%, 53%);
-  border-color: hsl(337, 36, 53);
-  color: hsl(240, 4, 16);
+  border-color: hsl(337, 36%, 53%);
+  color: hsl(240, 4%, 16%);
   transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
@@ -256,7 +256,7 @@ img {
 }
 
 .right {
-  background-color: hsl(122, 39, 49);
+  background-color: hsl(122, 39%, 49%);
 }
 
 #set-area {
