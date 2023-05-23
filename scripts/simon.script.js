@@ -134,16 +134,15 @@ function displayButtons() {
 function wonRound() {
   player.innerText = `That's right!`;
 
-  hue = changeHue(100);
+  hue = changeHue(122);
   playerGuess.length = 0;
   round++;
   timer -= 100;
   pause = true;
   lives = 3;
   setTimeout(() => {
-    console.log(checkDark())
     // Need to sort this out
-    checkDark() ? darkMode(hue) : changeHue();
+    hue = checkDark() ? darkMode(hue) : changeHue(hue);
     player.innerText = `Get ready...`;
   }, 2000);
   setTimeout(displaySequence, 3250);
