@@ -23,6 +23,7 @@ let reset = document.getElementById("reset");
 let grid = document.getElementById("simon-grid");
 let player = document.getElementById("player");
 let tally = document.getElementById("tally");
+let setToggle = document.getElementById("set-toggle")
 
 let { mode, hue } = getQuery();
 
@@ -38,8 +39,9 @@ let timer = 1000;
 let lives = 3;
 const playerGuess = [];
 
-let set = "pics";
-const glyphs = setGlyphs(set);
+let setIndex = 0
+let set = "🍽";
+let glyphs = setGlyphs(set);
 const sequence = [];
 
 function setSequence() {
@@ -134,7 +136,7 @@ function displayButtons() {
 function wonRound() {
   player.innerText = `That's right!`;
 
-  hue = changeHue(122);
+  changeHue(122);
   playerGuess.length = 0;
   round++;
   timer -= 100;
@@ -165,6 +167,16 @@ function checkDark() {
   }
 }
 
+function handleSet() {
+  setIndex = setIndex < 3 ? setIndex + 1 : 0
+  const sets = ["🍽", "🬗", "🭫", "●"]
+  set = sets[setIndex]
+  glyphs = setGlyphs(set)
+  setToggle.innerText = set
+  sequence.length = 0
+  setSequence()
+}
+
 function resetButton() {
   pause = false;
   round = 3;
@@ -181,6 +193,10 @@ function resetButton() {
 
 setSequence();
 displayStart();
+
+setToggle.addEventListener("click", () => {
+  handleSet()
+})
 
 reset.addEventListener("click", () => {
   resetButton();
@@ -210,7 +226,7 @@ addEventListener("keydown", (event) => {
   handleKeyDown(event.keyCode);
 });
 
-// window.addEventListener("wheel", (event) => {
-//   let colour = !hue ? 48 : hue;
-//   hue = event.deltaY < 0 ? changeHue(colour, 10) : changeHue(colour, -10);
-// });
+window.addEventListener("wheel", (event) => {
+  let colour = !hue ? 48 : hue;
+  hue = event.deltaY < 0 ? changeHue(colour, 10) : changeHue(colour, -10);
+});
